@@ -1,11 +1,22 @@
 package top.nomelin.engine.annotation;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
+
+/**
+ * <p>此注解用于标记一个实体的类型，可以重复注解</p>
+ * @author nomelin
+ */
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+@Repeatable(EntityTypes.class)
+public @interface EntityType {
+    top.nomelin.engine.enums.EntityType type() default top.nomelin.engine.enums.EntityType.PLATFORM;
+}
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface EntityType {
+@interface EntityTypes{
+    EntityType[] value();
 }
+
+

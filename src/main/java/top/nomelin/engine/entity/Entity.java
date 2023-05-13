@@ -1,4 +1,4 @@
 package top.nomelin.engine.entity;
 
-public class Entity {
+public abstract class Entity {
 }

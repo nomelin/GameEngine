@@ -1,4 +1,8 @@
-package top.nomelin.engine.enums;
+package top.nomelin.engine.interfaces;
+
+import top.nomelin.engine.enums.EntityType;
+
+import java.lang.annotation.Repeatable;
 
 /**
  * <p>实体类型枚举接口，用于@EntityType注解</p>
