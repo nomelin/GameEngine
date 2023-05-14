@@ -6,21 +6,12 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * <p>此注解用于注册实体的id</p>
+ * <p>实体都要注册此注解</p>
  *
  * @author nomelin
- * @deprecated
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface Identify {
-    /**
-     * 实体id,int类型
-     */
-    int id();
-
-    /**
-     * 实体描述，字符串类型
-     */
-    String description();
+public @interface Entity {
+    String description() default "这是一个实体";
 }

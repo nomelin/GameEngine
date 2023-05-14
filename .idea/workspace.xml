@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_TEST_SOURCES" value="false" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3cc5d49-da26-4778-a4ec-b09d9cdc9f6b" name="变更" comment="demo1">
+      <change afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/Component.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/Entity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Movement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/controller/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/entity/RigidBody.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/physics/Speed.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/top/nomelin/engine/physics/SpeedTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/physics/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/physics/Tools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/EntityType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/EntityType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/Identify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/Identify.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/controller/ECManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/controller/ECManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/physics/Orient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/physics/Orient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/top/nomelin/engine/physics/OrientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/top/nomelin/engine/physics/OrientTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +74,7 @@
       <recent name="top.nomelin.engine.physics" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.OrientTest.test">
+  <component name="RunManager" selected="JUnit.SpeedTest.test">
     <configuration name="OrientTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GameEngine" />
       <extension name="coverage">
@@ -69,6 +85,22 @@
       </extension>
       <option name="PACKAGE_NAME" value="top.nomelin.engine.physics" />
       <option name="MAIN_CLASS_NAME" value="top.nomelin.engine.physics.OrientTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpeedTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GameEngine" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.nomelin.engine.physics.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.nomelin.engine.physics" />
+      <option name="MAIN_CLASS_NAME" value="top.nomelin.engine.physics.SpeedTest" />
       <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -108,6 +140,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SpeedTest.test" />
         <item itemvalue="JUnit.OrientTest.test" />
         <item itemvalue="JUnit.ToolsTest.test" />
         <item itemvalue="JUnit.ToolsTest" />
@@ -122,7 +155,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683882027637</updated>
-      <workItem from="1683882029068" duration="27948000" />
+      <workItem from="1683882029068" duration="43891000" />
     </task>
     <task id="LOCAL-00001" summary="demo1">
       <created>1683886276217</created>
@@ -159,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683981557129</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="demo1">
+      <created>1683981772193</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683981772193</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

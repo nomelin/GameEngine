@@ -8,7 +8,7 @@ package top.nomelin.engine.physics;
  *
  * @author nomelin
  */
-public class Orient {
+public class Orient implements Cloneable {
     /**
      * 角度，0.0 <= angle < 360.0
      */
@@ -108,17 +108,19 @@ public class Orient {
         normalizeAngel();
     }
 
-    public void setAngle(double angle) {
+    public Orient setAngle(double angle) {
         this.angle = angle;
         normalizeAngel();
         angleToXY();
+        return this;
     }
 
-    public void setXY(double oriX, double oriY) {
+    public Orient setXY(double oriX, double oriY) {
         this.oriX = oriX;
         this.oriY = oriY;
         normalizeXY();
         xyToAngle();
+        return this;
     }
 
     public double getY() {
@@ -133,4 +135,23 @@ public class Orient {
         return angle;
     }
 
+    @Override
+    public Orient clone() {
+        try {
+            return (Orient) super.clone();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public boolean equals(Orient ori) {
+        //TODO 比较方向是否相等，可选误差
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "方向向量：angle="+angle+"; x="+oriX +"; y="+oriY+"; 模="+Math.sqrt(Math.pow(oriX,2)+Math.pow(oriY,2))+"。";
+    }
 }

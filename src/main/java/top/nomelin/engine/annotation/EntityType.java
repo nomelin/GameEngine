@@ -5,6 +5,7 @@ import java.lang.annotation.*;
 /**
  * <p>此注解用于标记一个实体的类型，可以重复注解</p>
  * @author nomelin
+ * @deprecated
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
@@ -13,6 +14,9 @@ public @interface EntityType {
     top.nomelin.engine.enums.EntityType type() default top.nomelin.engine.enums.EntityType.PLATFORM;
 }
 
+/**
+ * @deprecated
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @interface EntityTypes{

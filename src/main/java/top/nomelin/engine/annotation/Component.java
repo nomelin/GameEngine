@@ -6,21 +6,17 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * <p>此注解用于注册实体的id</p>
+ * <p>组件都要注册此注解</p>
  *
  * @author nomelin
- * @deprecated
  */
+
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface Identify {
+public @interface Component {
     /**
-     * 实体id,int类型
+     * 组件唯一名字,通过它来查找组件,务必确保其唯一，例如可以使用类名
      */
-    int id();
-
-    /**
-     * 实体描述，字符串类型
-     */
-    String description();
+    String name();
+    String description() default "这是一个组件";
 }
