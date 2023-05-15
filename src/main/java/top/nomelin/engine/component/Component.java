@@ -3,12 +3,15 @@ package top.nomelin.engine.component;
 import top.nomelin.engine.entity.Entity;
 
 public abstract class Component {
-    // 每个组件都属于一个实体
-    private Entity entity;
+    // 每个组件示例都属于一个实体实例
+    private final Entity entity;
+
+    public final int id;
 
     // 构造方法，传入一个实体作为参数
-    Component(Entity entity) {
+    public Component(Entity entity,int id) {
         this.entity = entity;
+        this.id=id;
     }
 
 
@@ -17,5 +20,9 @@ public abstract class Component {
 
     public Entity getEntity() {
         return entity;
+    }
+
+    public int getId() {
+        return id;
     }
 }

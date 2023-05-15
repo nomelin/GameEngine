@@ -8,8 +8,8 @@ import top.nomelin.engine.entity.Entity;
 @top.nomelin.engine.annotation.Component(name="Movement")
 public class Movement extends Component{
 
-    Movement(Entity entity) {
-        super(entity);
+    public Movement(Entity entity,int id) {
+        super(entity,id);
     }
 
     @Override

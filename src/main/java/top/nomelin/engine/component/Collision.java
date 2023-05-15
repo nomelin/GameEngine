@@ -3,8 +3,8 @@ package top.nomelin.engine.component;
 import top.nomelin.engine.entity.Entity;
 
 public class Collision extends Component{
-    Collision(Entity entity) {
-        super(entity);
+    public Collision(Entity entity,int id) {
+        super(entity,id);
     }
 
     @Override

@@ -7,9 +7,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3cc5d49-da26-4778-a4ec-b09d9cdc9f6b" name="变更" comment="demo1">
+    <list default="true" id="c3cc5d49-da26-4778-a4ec-b09d9cdc9f6b" name="变更" comment="添加guava，log4j，junit">
+      <change afterPath="$PROJECT_DIR$/src/log4j2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Collision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Collision.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Movement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Movement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/controller/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/controller/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/entity/RigidBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/entity/RigidBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/top/nomelin/engine/entity/EntityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/top/nomelin/engine/entity/EntityTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +79,36 @@
       <recent name="top.nomelin.engine.physics" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SpeedTest.test">
+  <component name="RunManager" selected="JUnit.EntityTest.test">
+    <configuration name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="top.nomelin.engine.controller.Game" />
+      <module name="GameEngine" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.nomelin.engine.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EntityTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GameEngine" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.nomelin.engine.entity.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="top.nomelin.engine.entity" />
+      <option name="MAIN_CLASS_NAME" value="top.nomelin.engine.entity.EntityTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OrientTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GameEngine" />
       <extension name="coverage">
@@ -105,21 +141,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ToolsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="GameEngine" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="top.nomelin.engine.physics.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="top.nomelin.engine.physics" />
-      <option name="MAIN_CLASS_NAME" value="top.nomelin.engine.physics.ToolsTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ToolsTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GameEngine" />
       <extension name="coverage">
@@ -138,10 +159,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.EntityTest.test" />
+        <item itemvalue="应用程序.Game" />
         <item itemvalue="JUnit.SpeedTest.test" />
         <item itemvalue="JUnit.OrientTest.test" />
         <item itemvalue="JUnit.ToolsTest.test" />
-        <item itemvalue="JUnit.ToolsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -154,7 +176,7 @@
       <option name="presentableId" value="Default" />
       <updated>1683882027637</updated>
       <workItem from="1683882029068" duration="49022000" />
-      <workItem from="1684140226762" duration="3982000" />
+      <workItem from="1684140226762" duration="10752000" />
     </task>
     <task id="LOCAL-00001" summary="demo1">
       <created>1683886276217</created>
@@ -226,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684156773529</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="添加guava，log4j，junit">
+      <created>1684159441212</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1684159441212</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,6 +274,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="demo1" />
-    <option name="LAST_COMMIT_MESSAGE" value="demo1" />
+    <MESSAGE value="添加guava，log4j，junit" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加guava，log4j，junit" />
   </component>
 </project>
