@@ -3,6 +3,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 javadoc/
+资料/
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
