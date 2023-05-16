@@ -4,6 +4,7 @@ target/
 !**/src/test/**/target/
 javadoc/
 资料/
+log/
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
