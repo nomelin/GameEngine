@@ -7,12 +7,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3cc5d49-da26-4778-a4ec-b09d9cdc9f6b" name="变更" comment="log4j2">
+    <list default="true" id="c3cc5d49-da26-4778-a4ec-b09d9cdc9f6b" name="变更" comment="annotation">
+      <change afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/event/CollisionEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/Component.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/EntityType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/EntityType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/Identify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/Identify.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Collision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Collision.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/controller/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/controller/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/top/nomelin/engine/entity/EntityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/top/nomelin/engine/entity/EntityTest.java" afterDir="false" />
     </list>
@@ -77,7 +77,7 @@
       <recent name="top.nomelin.engine.physics" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EntityTest.testLog">
+  <component name="RunManager" selected="JUnit.EntityTest.test">
     <configuration name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="top.nomelin.engine.controller.Game" />
       <module name="GameEngine" />
@@ -157,8 +157,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.EntityTest.testLog" />
         <item itemvalue="JUnit.EntityTest.test" />
+        <item itemvalue="JUnit.EntityTest.testLog" />
         <item itemvalue="应用程序.Game" />
         <item itemvalue="JUnit.SpeedTest.test" />
         <item itemvalue="JUnit.OrientTest.test" />
@@ -174,7 +174,7 @@
       <option name="presentableId" value="Default" />
       <updated>1683882027637</updated>
       <workItem from="1683882029068" duration="49022000" />
-      <workItem from="1684140226762" duration="18885000" />
+      <workItem from="1684140226762" duration="24478000" />
     </task>
     <task id="LOCAL-00001" summary="demo1">
       <created>1683886276217</created>
@@ -281,7 +281,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684239500782</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="annotation">
+      <created>1684241471941</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1684241471941</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,6 +310,7 @@
     <MESSAGE value="添加guava，log4j，junit" />
     <MESSAGE value="entity" />
     <MESSAGE value="log4j2" />
-    <option name="LAST_COMMIT_MESSAGE" value="log4j2" />
+    <MESSAGE value="annotation" />
+    <option name="LAST_COMMIT_MESSAGE" value="annotation" />
   </component>
 </project>

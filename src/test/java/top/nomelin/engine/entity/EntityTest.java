@@ -9,9 +9,7 @@ import top.nomelin.engine.component.Movement;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import static top.nomelin.engine.controller.Game.COMPONENT_ID;
 import static top.nomelin.engine.controller.Game.ENTITY_ID;
@@ -24,11 +22,13 @@ public class EntityTest {
         entity.init();
         Component movement = new Movement(entity, COMPONENT_ID + 1);
         entity.addComponent(movement);
+        Set<Integer> componentsId=new HashSet<>();
+        entity.containsComponent(Movement.class,componentsId);
+        System.out.println("找到的组件id："+componentsId);
         entity.start();
         entity.fixedUpdate();
         entity.update();
         entity.lateUpdate();
-
         entity.stop();
         entity.deleteComponent(COMPONENT_ID + 1);
         entity.destroy();

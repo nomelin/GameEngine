@@ -1,8 +1,5 @@
 package top.nomelin.engine.controller;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 /**
  * 定义游戏用到的常量
  */
@@ -17,8 +14,8 @@ public class Game {
      */
     public static final int STANDARD_FPS=60;
 
-    public static final int COMPONENT_ID=10000;
-    public static final int ENTITY_ID=20000;
+    public static final int COMPONENT_ID=200000;
+    public static final int ENTITY_ID=100000;
     public static void main(String[] args)
     {
 

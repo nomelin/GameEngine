@@ -3,11 +3,13 @@ package top.nomelin.engine.entity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import top.nomelin.engine.component.Component;
+import top.nomelin.engine.controller.Game;
 import top.nomelin.engine.interfaces.EntityInterface;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 
 public abstract class Entity implements EntityInterface {
@@ -28,6 +30,9 @@ public abstract class Entity implements EntityInterface {
         super();
         this.id = id;
         components = new HashMap<>();
+        if(id< Game.ENTITY_ID||id>=Game.COMPONENT_ID){
+            LOGGER.error("实体id错误，超出预设id范围，id=："+id);
+        }
     }
 
     /**
@@ -66,10 +71,10 @@ public abstract class Entity implements EntityInterface {
 
         if (components.containsKey(componentId)) {
             components.remove(componentId);
-            LOGGER.info("实体id=" + id + ",deleteComponent成功," + "组件id=" + componentId);
+            LOGGER.info("实体id=" + id + ",deleteComponent(int)成功," + "组件id=" + componentId);
             return true;
         } else {
-            LOGGER.warn("实体id=" + id + ",deleteComponent失败，组件id不存在," + "id=" + componentId);
+            LOGGER.warn("实体id=" + id + ",deleteComponent(int)失败，组件id不存在," + "id=" + componentId);
             return false;
         }
     }
@@ -78,12 +83,36 @@ public abstract class Entity implements EntityInterface {
 
         if (components.containsValue(component)) {
             components.remove(component.getId(), component);
-            LOGGER.info("实体id=" + id + ",deleteComponent成功," + "组件id=" + component.getId());
+            LOGGER.info("实体id=" + id + ",deleteComponent(component)成功," + "组件id=" + component.getId());
             return true;
         } else {
-            LOGGER.warn("实体id=" + id + ",deleteComponent失败，组件不存在，" + "id=" + component.getId());
+            LOGGER.warn("实体id=" + id + ",deleteComponent(component)失败，组件不存在，" + "id=" + component.getId());
             return false;
         }
+    }
+
+    /**
+     * 查找实体是否具有某种组件
+     * @param componentClass 要查找的组件类的class对象
+     * @param ComponentsId 需要一个已经初始化的set引用，存放找到组件对象的id
+     * @return 如果没有找到或set没有实例化，返回false，否则返回true
+     */
+    public boolean containsComponent(Class<?> componentClass, Set<Integer> ComponentsId){
+        if(!Component.class.isAssignableFrom(componentClass)){
+            LOGGER.warn("传入的componentClass不是component或其子类对象");
+            return false;
+        }
+        if(ComponentsId==null){
+            LOGGER.error("传入的ComponentsId没有初始化，无法返回所需id");
+            return false;
+        }
+       for(Component component:components.values()){
+           if(componentClass.isInstance(component)){
+                ComponentsId.add(component.getId());
+           }
+       }
+       LOGGER.info("返回componentsId成功,组件名"+componentClass.getName());
+        return true;
     }
 
     public void init() {
@@ -154,5 +183,18 @@ public abstract class Entity implements EntityInterface {
 
     public int getId() {
         return id;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        // 如果obj是null或者不是Entity类或其子类的实例，返回false
+        if (!(obj instanceof Entity)) {
+            return false;
+        }
+        // 如果obj和this是同一个引用，返回true
+        if (obj == this) {
+            return true;
+        }
+        // 如果obj和this的id相同，返回true,其他情况返回false
+        return ((Entity) obj).getId() == this.id;
     }
 }
