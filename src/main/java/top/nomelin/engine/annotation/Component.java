@@ -11,6 +11,7 @@ import java.lang.annotation.Target;
  * @author nomelin
  */
 
+@Deprecated(forRemoval = true)
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface Component {

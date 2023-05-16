@@ -9,6 +9,10 @@
   <component name="ChangeListManager">
     <list default="true" id="c3cc5d49-da26-4778-a4ec-b09d9cdc9f6b" name="变更" comment="log4j2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/EntityType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/EntityType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/Identify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/annotation/Identify.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/top/nomelin/engine/entity/EntityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/top/nomelin/engine/entity/EntityTest.java" afterDir="false" />
     </list>
@@ -170,7 +174,7 @@
       <option name="presentableId" value="Default" />
       <updated>1683882027637</updated>
       <workItem from="1683882029068" duration="49022000" />
-      <workItem from="1684140226762" duration="16991000" />
+      <workItem from="1684140226762" duration="18885000" />
     </task>
     <task id="LOCAL-00001" summary="demo1">
       <created>1683886276217</created>
@@ -270,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684234693687</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="log4j2">
+      <created>1684239500782</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1684239500782</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

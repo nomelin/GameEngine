@@ -9,7 +9,8 @@ import java.lang.annotation.*;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Repeatable(EntityTypes.class)
+//@Repeatable(EntityTypes.class)
+@Deprecated(forRemoval = true)
 public @interface EntityType {
     top.nomelin.engine.enums.EntityType type() default top.nomelin.engine.enums.EntityType.PLATFORM;
 }
@@ -19,8 +20,9 @@ public @interface EntityType {
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
+@Deprecated(forRemoval = true)
 @interface EntityTypes{
-    EntityType[] value();
+    //EntityType[] value();
 }
 
 
