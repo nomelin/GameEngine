@@ -42,7 +42,7 @@ public abstract class Entity implements EntityInterface {
                     newInstance(this, componentId);
             if (object instanceof Component component) {
                 components.put(componentId, component);
-                LOGGER.warn("实体id=" + id + ",addComponent成功，组件名=" + name + "组件id=" + componentId);
+                LOGGER.info("实体id=" + id + ",addComponent成功，组件名=" + name + "组件id=" + componentId);
                 return true;
             } else {
                 LOGGER.warn("实体id=" + id + ",，组件错误，组件名=" + name + "组件id=" + componentId);

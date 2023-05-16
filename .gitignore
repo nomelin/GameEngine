@@ -5,6 +5,8 @@ target/
 javadoc/
 资料/
 log/
+tmp.txt
+.gitignore
 
 ### IntelliJ IDEA ###
 .idea/modules.xml

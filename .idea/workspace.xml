@@ -7,10 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3cc5d49-da26-4778-a4ec-b09d9cdc9f6b" name="变更" comment="entity">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
+    <list default="true" id="c3cc5d49-da26-4778-a4ec-b09d9cdc9f6b" name="变更" comment="log4j2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/log4j2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/top/nomelin/engine/entity/EntityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/top/nomelin/engine/entity/EntityTest.java" afterDir="false" />
     </list>
@@ -75,7 +73,7 @@
       <recent name="top.nomelin.engine.physics" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EntityTest.test">
+  <component name="RunManager" selected="JUnit.EntityTest.testLog">
     <configuration name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="top.nomelin.engine.controller.Game" />
       <module name="GameEngine" />
@@ -155,8 +153,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.EntityTest.test" />
         <item itemvalue="JUnit.EntityTest.testLog" />
+        <item itemvalue="JUnit.EntityTest.test" />
         <item itemvalue="应用程序.Game" />
         <item itemvalue="JUnit.SpeedTest.test" />
         <item itemvalue="JUnit.OrientTest.test" />
@@ -172,7 +170,7 @@
       <option name="presentableId" value="Default" />
       <updated>1683882027637</updated>
       <workItem from="1683882029068" duration="49022000" />
-      <workItem from="1684140226762" duration="14823000" />
+      <workItem from="1684140226762" duration="16991000" />
     </task>
     <task id="LOCAL-00001" summary="demo1">
       <created>1683886276217</created>
@@ -258,7 +256,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684166192445</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="log4j2">
+      <created>1684234663064</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1684234663064</updated>
+    </task>
+    <task id="LOCAL-00014" summary="log4j2">
+      <created>1684234693687</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1684234693687</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,6 +291,7 @@
     <MESSAGE value="demo1" />
     <MESSAGE value="添加guava，log4j，junit" />
     <MESSAGE value="entity" />
-    <option name="LAST_COMMIT_MESSAGE" value="entity" />
+    <MESSAGE value="log4j2" />
+    <option name="LAST_COMMIT_MESSAGE" value="log4j2" />
   </component>
 </project>
