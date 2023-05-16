@@ -1,5 +1,7 @@
 package top.nomelin.engine.entity;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import top.nomelin.engine.component.Component;
 import top.nomelin.engine.component.Movement;
@@ -23,5 +25,16 @@ public class EntityTest {
         entity.stop();
         entity.deleteComponent(COMPONENT_ID+1);
         entity.destroy();
+    }
+
+    @Test
+    public void testLog() {
+        Logger logger= LogManager.getLogger(EntityTest.class);
+        logger.info("info信息");
+        logger.warn("警告信息");
+        logger.trace("trace信息");
+        logger.error("error信息");
+        logger.fatal("fatal信息");
+
     }
 }
