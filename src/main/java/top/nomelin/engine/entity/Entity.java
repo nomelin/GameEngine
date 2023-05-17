@@ -25,6 +25,8 @@ public abstract class Entity implements EntityInterface {
      */
     private final int id;
 
+    private boolean onVisible;
+
     // 构造方法，初始化组件列表为空
     public Entity(int id) {
         super();
@@ -117,6 +119,8 @@ public abstract class Entity implements EntityInterface {
 
     public void init() {
         LOGGER.info("实体id=" + id + ",init");
+        onStart=false;
+        onVisible=false;
     }
 
     @Override
@@ -172,6 +176,8 @@ public abstract class Entity implements EntityInterface {
         LOGGER.info("实体id=" + id + ",destroy");
         components.clear();
         components = null;
+        onVisible=false;
+        onStart=false;
     }
 
     /**
@@ -180,6 +186,22 @@ public abstract class Entity implements EntityInterface {
     public boolean onStart() {
         return onStart;
     }
+
+    public boolean onVisible(){
+        return onVisible;
+    }
+
+    public void setVisible(){
+        LOGGER.info("实体id=" + id + ",visible");
+        onVisible=true;
+    }
+
+    public void setInvisible(){
+        LOGGER.info("实体id=" + id + ",invisible");
+        onVisible=false;
+    }
+
+
 
     public int getId() {
         return id;

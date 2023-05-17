@@ -1,15 +1,20 @@
 package top.nomelin.engine.entity;
 
 import com.google.common.base.Joiner;
+import com.google.common.eventbus.AsyncEventBus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
+import top.nomelin.engine.component.Collision;
 import top.nomelin.engine.component.Component;
 import top.nomelin.engine.component.Movement;
+import top.nomelin.engine.event.CollisionEvent;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static top.nomelin.engine.controller.Game.COMPONENT_ID;
 import static top.nomelin.engine.controller.Game.ENTITY_ID;
@@ -19,12 +24,22 @@ public class EntityTest {
     @Test
     public void test() {
         Entity entity = new RigidBody(ENTITY_ID + 1);
-        entity.init();
+        Entity entity2 = new RigidBody(ENTITY_ID + 2);
         Component movement = new Movement(entity, COMPONENT_ID + 1);
         entity.addComponent(movement);
+        // 事件通信
+        ExecutorService executor = Executors.newCachedThreadPool();
+        AsyncEventBus eventBus = new AsyncEventBus(executor);
+        Component collision=new Collision(entity,COMPONENT_ID+2);
+        entity.addComponent(collision);
+        eventBus.register(collision);
+        eventBus.post(new CollisionEvent(entity,entity2,true));
+        //查找实体组件
         Set<Integer> componentsId=new HashSet<>();
         entity.containsComponent(Movement.class,componentsId);
         System.out.println("找到的组件id："+componentsId);
+        //entity生命周期
+        entity.init();
         entity.start();
         entity.fixedUpdate();
         entity.update();

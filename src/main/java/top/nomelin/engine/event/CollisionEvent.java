@@ -8,22 +8,44 @@ public class CollisionEvent {
     private Entity entity1;
     private Entity entity2;
 
+    private boolean state;
+
     protected static final Logger LOGGER=LogManager.getLogger(CollisionEvent.class);
 
-    public CollisionEvent(Entity entity1, Entity entity2) {
+    /**
+     *
+     * @param entity1 碰撞实体1
+     * @param entity2 碰撞实体2
+     * @param state true为enter碰撞，false为exit碰撞
+     */
+    public CollisionEvent(Entity entity1, Entity entity2,boolean state) {
+        if(entity1==null||entity2==null){
+            LOGGER.warn("生成碰撞事件失败，实体为null");
+            return;
+        }
         this.entity1 = entity1;
         this.entity2 = entity2;
+        this.state=state;
         LOGGER.info("生成碰撞事件");
     }
 
-    public boolean getEntity(Entity entity1,Entity entity2) {
-        if(entity1==null||entity2==null){
-            LOGGER.warn("碰撞事件实体为null,取失败");
-            return false;
+    public Entity getEntity1() {
+        if(entity1==null){
+            LOGGER.warn("获取碰撞事件实体失败，实体为null");
+            return null;
         }
-        this.entity1=entity1;
-        this.entity2=entity2;
-        LOGGER.info("取得碰撞事件"+"entity1id="+entity1.getId()+"entity2id="+entity2.getId());
-        return true;
+        return entity1;
+    }
+
+    public Entity getEntity2() {
+        if(entity1==null){
+            LOGGER.warn("获取碰撞事件实体失败，实体为null");
+            return null;
+        }
+        return entity2;
+    }
+
+    public boolean getState() {
+        return state;
     }
 }

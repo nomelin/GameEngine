@@ -16,10 +16,5 @@ public class Game {
 
     public static final int COMPONENT_ID=200000;
     public static final int ENTITY_ID=100000;
-    public static void main(String[] args)
-    {
-
-    }
-
 
 }
