@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import top.nomelin.engine.component.Component;
 import top.nomelin.engine.controller.Game;
-import top.nomelin.engine.interfaces.EntityInterface;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
@@ -12,7 +11,7 @@ import java.util.Map;
 import java.util.Set;
 
 
-public abstract class Entity implements EntityInterface {
+public abstract class Entity {
     protected static final Logger LOGGER = LogManager.getLogger(Entity.class);
     /**
      * 实体对应的组件列表
@@ -123,13 +122,13 @@ public abstract class Entity implements EntityInterface {
         onVisible=false;
     }
 
-    @Override
+
     public void start() {
         onStart = true;
         LOGGER.info("实体id=" + id + ",onstart");
     }
 
-    @Override
+
     public boolean fixedUpdate() {
         if (!onStart) {
             LOGGER.info("实体id=" + id + ",fixedUpdate失败");
@@ -141,7 +140,7 @@ public abstract class Entity implements EntityInterface {
     }
 
     // 更新实体的方法，遍历组件列表，并调用每个组件的更新方法
-    @Override
+
     public boolean update() {
         if (!onStart) {
             LOGGER.info("实体id=" + id + ",update失败");
@@ -165,13 +164,13 @@ public abstract class Entity implements EntityInterface {
     }
 
 
-    @Override
+
     public void stop() {
         LOGGER.info("实体id=" + id + ",stop");
         onStart = false;
     }
 
-    @Override
+
     public void destroy() {
         LOGGER.info("实体id=" + id + ",destroy");
         components.clear();

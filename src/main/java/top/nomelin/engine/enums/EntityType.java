@@ -1,14 +1,14 @@
 package top.nomelin.engine.enums;
 
-import top.nomelin.engine.interfaces.EntityTypeInterface;
+//import top.nomelin.engine.interfaces.EntityTypeInterface;
 
 /**
  * <p>实体类型枚举，用于@EntityType注解</p>
  *
  * @author nomelin
- * @see EntityTypeInterface
  */
-public enum EntityType implements EntityTypeInterface {
+@Deprecated(forRemoval = true)
+public enum EntityType  {
     /**
      * 平台
      */

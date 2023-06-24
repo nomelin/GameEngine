@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import top.nomelin.engine.entity.Entity;
 
-public class CollisionEvent {
+public class CollisionEvent{
     private Entity entity1;
     private Entity entity2;
 
