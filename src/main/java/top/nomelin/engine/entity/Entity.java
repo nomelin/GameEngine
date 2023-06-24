@@ -7,11 +7,12 @@ import top.nomelin.engine.controller.Game;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 
-public abstract class Entity {
+public class Entity {
     protected static final Logger LOGGER = LogManager.getLogger(Entity.class);
     /**
      * 实体对应的组件列表
@@ -37,7 +38,7 @@ public abstract class Entity {
     }
 
     /**
-     * 已移除
+     * 已移除,没必要通过反射来在实体方法内实例化组件。组件可能需要进行一些独特的设置。
      */
     @Deprecated(forRemoval = true)
     public boolean addComponent(String name, int componentId) {
@@ -62,12 +63,20 @@ public abstract class Entity {
         }
     }
 
+    /**
+     * 添加组件
+     * @param component 组件实例
+     */
     public boolean addComponent(Component component) {
         components.put(component.getId(), component);
         LOGGER.info("实体id=" + id + ",addComponent成功," + "组件id=" + component.getId());
         return true;
     }
 
+    /**
+     * 删除组件
+     * @param componentId 组件id（id属于对象，标识唯一一个组件实例）
+     */
     public boolean deleteComponent(int componentId) {
 
         if (components.containsKey(componentId)) {
@@ -80,8 +89,12 @@ public abstract class Entity {
         }
     }
 
+    /**
+     * 删除组件
+     * @param component 组件对象，或者说它的引用。
+     * @return
+     */
     public boolean deleteComponent(Component component) {
-
         if (components.containsValue(component)) {
             components.remove(component.getId(), component);
             LOGGER.info("实体id=" + id + ",deleteComponent(component)成功," + "组件id=" + component.getId());
@@ -90,6 +103,29 @@ public abstract class Entity {
             LOGGER.warn("实体id=" + id + ",deleteComponent(component)失败，组件不存在，" + "id=" + component.getId());
             return false;
         }
+    }
+
+    /**
+     * 删除组件，所有这类组件的对象都会删除
+     * @param compName 组件类名
+     */
+    public boolean deleteComponent(String compName){
+        Iterator<Map.Entry<Integer, Component>> iter = components.entrySet().iterator();
+        int num=0;
+        while (iter.hasNext()) {
+            Map.Entry<Integer, Component> entry = iter.next();
+            Component comp = entry.getValue();
+            if (comp.getClass().getSimpleName().equals(compName)) {
+                iter.remove();
+                LOGGER.info("实体id=" + id + ",deleteComponent(component)成功," + "组件id=" + comp.getId());
+                num++;
+            }
+        }
+        if(num==0){
+            LOGGER.warn("实体id=" + id + ",deleteComponent(component)失败，没有这类组件");
+            return false;
+        }
+        return true;
     }
 
     /**

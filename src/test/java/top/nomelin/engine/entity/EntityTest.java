@@ -23,8 +23,8 @@ public class EntityTest {
 
     @Test
     public void test() {
-        Entity entity = new RigidBody(ENTITY_ID + 1);
-        Entity entity2 = new RigidBody(ENTITY_ID + 2);
+        Entity entity = new Entity(ENTITY_ID + 1);
+        Entity entity2 = new Entity(ENTITY_ID + 2);
         Component movement = new Movement(entity, COMPONENT_ID + 1);
         entity.addComponent(movement);
         // 事件通信
