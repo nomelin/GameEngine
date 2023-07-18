@@ -27,6 +27,15 @@ public class Collision extends Component{
         return false;
     }
 
+    @Override
+    protected boolean fixedUpdateFunc() {
+        return false;
+    }
+
+    @Override
+    protected boolean lateUpdateFunc() {
+        return false;
+    }
 
     @Override
     public Entity getEntity() {

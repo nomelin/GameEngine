@@ -14,8 +14,9 @@ public class Game {
      */
     public static final int STANDARD_FPS=60;
 
-    public static final int COMPONENT_ID=2000000;
-    public static final int ENTITY_ID=1000000;
+    public static final int COMPONENT_ID=3000000;
+    public static final int ENTITY_ID=2000000;
+    public static final int SYSTEM_ID=1000000;
 
     public static final int ERROR_ID=-1;
 

@@ -2,7 +2,7 @@ package top.nomelin.engine.component;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import top.nomelin.engine.game.Game;
+import top.nomelin.engine.controller.IdManager;
 import top.nomelin.engine.entity.Entity;
 
 public abstract class Component {
@@ -14,16 +14,19 @@ public abstract class Component {
     //是否处于start()-stop()
     private boolean onStart;
 
-    protected static final Logger LOGGER= LogManager.getLogger(Component.class);
+    protected static final Logger LOGGER = LogManager.getLogger(Component.class);
 
     // 构造方法，传入一个实体作为参数
-    public Component(Entity entity,int id) {
+    public Component(Entity entity, int id) {
         this.entity = entity;
-        this.id=id;
-        onStart=true;
-        if(id< Game.COMPONENT_ID){
-            LOGGER.error("组件id错误，超出预设id范围，id=："+id);
-        }
+        this.id = id;
+        onStart = true;
+    }
+
+    public Component(Entity entity) {
+        this.entity = entity;
+        this.id = IdManager.getComponentId();
+        onStart = true;
     }
 
     public void start() {
@@ -36,7 +39,7 @@ public abstract class Component {
             LOGGER.info("组件id=" + id + ",fixedUpdate失败，未启动");
             return false;
         }
-        if(fixedUpdateFunc()){
+        if (fixedUpdateFunc()) {
             LOGGER.info("组件id=" + id + ",fixedUpdate成功");
             return true;
         }
@@ -47,41 +50,37 @@ public abstract class Component {
     /**
      * 子类需要实现这个方法作为功能体。无需考虑启动状态。
      */
-    protected boolean fixedUpdateFunc(){
-        return true;
-    }
+    protected abstract boolean fixedUpdateFunc();
 
     public final boolean update() {
         if (!onStart) {
             LOGGER.info("组件id=" + id + ",update失败，未启动");
             return false;
         }
-        if(updateFunc()){
+        if (updateFunc()) {
             LOGGER.info("组件id=" + id + ",update成功");
             return true;
         }
         LOGGER.info("组件id=" + id + ",update失败");
         return false;
     }
-    protected boolean updateFunc(){
-        return true;
-    }
+
+    protected abstract boolean updateFunc();
 
     public final boolean lateUpdate() {
         if (!onStart) {
             LOGGER.info("组件id=" + id + ",lateUpdate失败，未启动");
             return false;
         }
-        if(lateUpdateFunc()){
+        if (lateUpdateFunc()) {
             LOGGER.info("组件id=" + id + ",lateUpdate成功");
             return true;
         }
         LOGGER.info("组件id=" + id + ",lateUpdate失败");
         return false;
     }
-    protected boolean lateUpdateFunc(){
-        return true;
-    }
+
+    protected abstract boolean lateUpdateFunc();
 
     public void stop() {
         LOGGER.info("组件id=" + id + ",stop");

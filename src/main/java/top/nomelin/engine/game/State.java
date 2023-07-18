@@ -40,6 +40,14 @@ public class State {
 
     }
 
+    public void removeTransition(State nextState){
+        transitions.remove(nextState.getName());
+    }
+
+    public void removeTransition(String nextStateName){
+        transitions.remove(nextStateName);
+    }
+
     /**
      * @param input 输入接口
      * @return 切换后的状态的名字（没切换就是自己的名字）
@@ -56,5 +64,22 @@ public class State {
 
     public String getName() {
         return name;
+    }
+
+    /**
+     * 若本状态包含指向输入状态的转换，则返回true。
+     * @param state 输入状态的引用
+     */
+    public boolean containsNextState(State state){
+        String sn=state.getName();
+        return transitions.containsKey(sn);
+    }
+
+    /**
+     * 若本状态包含指向输入状态的转换，则返回true。
+     * @param stateName 输入状态的名字
+     */
+    public boolean containsNextState(String stateName){
+        return transitions.containsKey(stateName);
     }
 }

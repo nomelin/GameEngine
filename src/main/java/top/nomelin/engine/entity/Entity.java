@@ -33,14 +33,17 @@ public class Entity {
         super();
         this.id = id;
         components = new HashMap<>();
-        if(id< Game.ENTITY_ID||id>=Game.COMPONENT_ID){
-            LOGGER.error("实体id错误，超出预设id范围，id=："+id);
-        }
     }
 
-    /**
-     * 已移除,没必要通过反射来在实体方法内实例化组件。组件可能需要进行一些独特的设置。
-     */
+    public Entity(){
+        super();
+        id=IdManager.getEntityId();
+        components = new HashMap<>();
+    }
+
+    /*
+     * 已移除,没必要通过反射来在实体方法内实例化组件。组件可能需要进行一些独特设置。
+     *
     @Deprecated(forRemoval = true)
     public boolean addComponent(String name, int componentId) {
         try {
@@ -62,7 +65,7 @@ public class Entity {
             e.printStackTrace();
             return false;
         }
-    }
+    }*/
 
     /**
      * 添加组件

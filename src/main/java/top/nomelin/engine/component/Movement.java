@@ -12,8 +12,17 @@ public class Movement extends Component{
     }
 
     @Override
-    public boolean updateFunc() {
+    protected boolean fixedUpdateFunc() {
         return false;
     }
 
+    @Override
+    protected boolean updateFunc() {
+        return false;
+    }
+
+    @Override
+    protected boolean lateUpdateFunc() {
+        return false;
+    }
 }

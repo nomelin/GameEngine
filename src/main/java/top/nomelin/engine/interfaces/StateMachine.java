@@ -2,14 +2,12 @@ package top.nomelin.engine.interfaces;
 
 import top.nomelin.engine.game.State;
 
-import java.util.List;
-import java.util.Map;
 import java.util.function.Function;
 
 public interface StateMachine {
 
     // 初始化状态机
-    void init(State... states);
+    //void init(State... states);
 
     // 获取当前状态
     State getCurrentState();

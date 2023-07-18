@@ -50,6 +50,16 @@ public class Sprite extends Component {
         return true;
     }
 
+    @Override
+    protected boolean fixedUpdateFunc() {
+        return false;
+    }
+
+    @Override
+    protected boolean lateUpdateFunc() {
+        return false;
+    }
+
     /**
      * 加载文件夹
      *
@@ -164,7 +174,6 @@ public class Sprite extends Component {
 
     /**
      * @param imgState 设置类别
-     * @return
      */
     public boolean setState(String imgState) {
         if (imgState == null) {
