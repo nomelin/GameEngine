@@ -1,7 +1,7 @@
 package top.nomelin.engine.component;
 
 import org.junit.Test;
-import top.nomelin.engine.controller.Game;
+import top.nomelin.engine.game.Game;
 import top.nomelin.engine.entity.RigidBody;
 
 

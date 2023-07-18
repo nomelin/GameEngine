@@ -2,6 +2,7 @@ package top.nomelin.engine.controller;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import top.nomelin.engine.game.Game;
 
 /**
  * 管理id的发放和回收
@@ -20,29 +21,29 @@ public class IdManager {
 
     }
 
-    public int getComponentId() {
+    public static int getComponentId() {
         componentOffset++;
         if (componentOffset >= Game.COMPONENT_ID - Game.ENTITY_ID) {
             LOGGER.error("组件id达到上限，无法发放：" + componentOffset);
             return Game.ERROR_ID;
         }
-        LOGGER.info("发放组件id:" + Game.COMPONENT_ID + componentOffset);
+        LOGGER.info("发放组件id:" + (Game.COMPONENT_ID + componentOffset));
         componentCount++;
         return Game.COMPONENT_ID + componentOffset;
     }
 
-    public int getEntityId() {
+    public static int getEntityId() {
         entityOffset++;
         if (entityOffset >= Game.COMPONENT_ID - Game.ENTITY_ID) {
             LOGGER.error("实体id达到上限，无法发放：" + entityOffset);
             return Game.ERROR_ID;
         }
-        LOGGER.info("发放实体id:" + Game.ENTITY_ID + entityOffset);
+        LOGGER.info("发放实体id:" + (Game.ENTITY_ID + entityOffset));
         entityCount++;
         return Game.ENTITY_ID + entityOffset;
     }
 
-    public void releaseId(int id) {
+    public static void releaseId(int id) {
         char cha = Integer.toString(id).charAt(0);
         int digit = Character.getNumericValue(cha);
         switch (digit) {
@@ -52,11 +53,11 @@ public class IdManager {
         }
     }
 
-    public int getEntityIdNum() {
+    public static int getEntityIdNum() {
         return entityCount;
     }
 
-    public int getComponentIdNum() {
+    public static int getComponentIdNum() {
         return componentCount;
     }
 

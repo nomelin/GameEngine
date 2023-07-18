@@ -2,7 +2,7 @@ package top.nomelin.engine.component;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import top.nomelin.engine.controller.Game;
+import top.nomelin.engine.game.Game;
 import top.nomelin.engine.entity.Entity;
 
 public abstract class Component {
@@ -11,20 +11,87 @@ public abstract class Component {
 
     public final int id;
 
-    protected final Logger LOGGER= LogManager.getLogger(Component.class);
+    //是否处于start()-stop()
+    private boolean onStart;
+
+    protected static final Logger LOGGER= LogManager.getLogger(Component.class);
 
     // 构造方法，传入一个实体作为参数
     public Component(Entity entity,int id) {
         this.entity = entity;
         this.id=id;
+        onStart=true;
         if(id< Game.COMPONENT_ID){
             LOGGER.error("组件id错误，超出预设id范围，id=："+id);
         }
     }
 
+    public void start() {
+        onStart = true;
+        LOGGER.info("组件id=" + id + ",onstart");
+    }
 
-    // 抽象的更新方法，每个具体的组件都要实现它
-    public abstract void update();
+    public final boolean fixedUpdate() {
+        if (!onStart) {
+            LOGGER.info("组件id=" + id + ",fixedUpdate失败，未启动");
+            return false;
+        }
+        if(fixedUpdateFunc()){
+            LOGGER.info("组件id=" + id + ",fixedUpdate成功");
+            return true;
+        }
+        LOGGER.info("组件id=" + id + ",fixedUpdate失败");
+        return false;
+    }
+
+    /**
+     * 子类需要实现这个方法作为功能体。无需考虑启动状态。
+     */
+    protected boolean fixedUpdateFunc(){
+        return true;
+    }
+
+    public final boolean update() {
+        if (!onStart) {
+            LOGGER.info("组件id=" + id + ",update失败，未启动");
+            return false;
+        }
+        if(updateFunc()){
+            LOGGER.info("组件id=" + id + ",update成功");
+            return true;
+        }
+        LOGGER.info("组件id=" + id + ",update失败");
+        return false;
+    }
+    protected boolean updateFunc(){
+        return true;
+    }
+
+    public final boolean lateUpdate() {
+        if (!onStart) {
+            LOGGER.info("组件id=" + id + ",lateUpdate失败，未启动");
+            return false;
+        }
+        if(lateUpdateFunc()){
+            LOGGER.info("组件id=" + id + ",lateUpdate成功");
+            return true;
+        }
+        LOGGER.info("组件id=" + id + ",lateUpdate失败");
+        return false;
+    }
+    protected boolean lateUpdateFunc(){
+        return true;
+    }
+
+    public void stop() {
+        LOGGER.info("组件id=" + id + ",stop");
+        onStart = false;
+    }
+
+    public boolean onStart() {
+        return onStart;
+    }
+
 
     public Entity getEntity() {
         return entity;

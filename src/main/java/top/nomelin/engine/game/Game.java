@@ -1,4 +1,4 @@
-package top.nomelin.engine.controller;
+package top.nomelin.engine.game;
 
 /**
  * 定义游戏用到的常量

@@ -3,7 +3,8 @@ package top.nomelin.engine.entity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import top.nomelin.engine.component.Component;
-import top.nomelin.engine.controller.Game;
+import top.nomelin.engine.game.Game;
+import top.nomelin.engine.controller.IdManager;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
@@ -134,7 +135,7 @@ public class Entity {
      * @param ComponentsId 需要一个已经初始化的set引用，存放找到组件对象的id
      * @return 如果没有找到或set没有实例化，返回false，否则返回true
      */
-    public boolean containsComponent(Class<?> componentClass, Set<Integer> ComponentsId){
+    public boolean searchComponent(Class<?> componentClass, Set<Integer> ComponentsId){
         if(!Component.class.isAssignableFrom(componentClass)){
             LOGGER.warn("传入的componentClass不是component或其子类对象");
             return false;
@@ -155,7 +156,7 @@ public class Entity {
     public void init() {
         LOGGER.info("实体id=" + id + ",init");
         onStart=false;
-        onVisible=false;
+        onVisible=true;
     }
 
 
@@ -167,11 +168,13 @@ public class Entity {
 
     public boolean fixedUpdate() {
         if (!onStart) {
-            LOGGER.info("实体id=" + id + ",fixedUpdate失败");
+            LOGGER.info("实体id=" + id + ",fixedUpdate失败，未启动");
             return false;
         }
-        //TODO
-        LOGGER.info("实体id=" + id + ",fixedUpdate成功");
+        for (Component component : components.values()) {
+            component.fixedUpdate();
+        }
+        LOGGER.info("实体id=" + id + ",fixedUpdate结束");
         return true;
     }
 
@@ -179,27 +182,27 @@ public class Entity {
 
     public boolean update() {
         if (!onStart) {
-            LOGGER.info("实体id=" + id + ",update失败");
+            LOGGER.info("实体id=" + id + ",update失败，未启动");
             return false;
         }
         for (Component component : components.values()) {
-            component.update();//TODO 不是所有组件都在这个阶段调用
+            component.update();
         }
-        LOGGER.info("实体id=" + id + ",update成功");
+        LOGGER.info("实体id=" + id + ",update结束");
         return true;
     }
 
     public boolean lateUpdate() {
         if (!onStart) {
-            LOGGER.info("实体id=" + id + ",lateUpdate失败");
+            LOGGER.info("实体id=" + id + ",lateUpdate失败，未启动");
             return false;
         }
-        //TODO
-        LOGGER.info("实体id=" + id + ",lateUpdate成功");
+        for (Component component : components.values()) {
+            component.lateUpdate();
+        }
+        LOGGER.info("实体id=" + id + ",lateUpdate结束");
         return true;
     }
-
-
 
     public void stop() {
         LOGGER.info("实体id=" + id + ",stop");
@@ -208,11 +211,15 @@ public class Entity {
 
 
     public void destroy() {
-        LOGGER.info("实体id=" + id + ",destroy");
-        components.clear();
-        components = null;
         onVisible=false;
         onStart=false;
+        for (Component component : components.values()) {
+            IdManager.releaseId(component.getId());
+        }
+        IdManager.releaseId(id);
+        components.clear();
+        components = null;
+        LOGGER.info("实体id=" + id + ",destroy");
     }
 
     /**

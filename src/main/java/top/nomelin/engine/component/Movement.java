@@ -12,8 +12,8 @@ public class Movement extends Component{
     }
 
     @Override
-    public void update() {
-
+    public boolean updateFunc() {
+        return false;
     }
 
 }

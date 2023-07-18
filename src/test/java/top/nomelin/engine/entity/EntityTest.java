@@ -8,6 +8,7 @@ import org.junit.Test;
 import top.nomelin.engine.component.Collision;
 import top.nomelin.engine.component.Component;
 import top.nomelin.engine.component.Movement;
+import top.nomelin.engine.controller.IdManager;
 import top.nomelin.engine.event.CollisionEvent;
 
 import java.io.FileWriter;
@@ -16,27 +17,24 @@ import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static top.nomelin.engine.controller.Game.COMPONENT_ID;
-import static top.nomelin.engine.controller.Game.ENTITY_ID;
-
 public class EntityTest {
 
     @Test
     public void test() {
-        Entity entity = new Entity(ENTITY_ID + 1);
-        Entity entity2 = new Entity(ENTITY_ID + 2);
-        Component movement = new Movement(entity, COMPONENT_ID + 1);
+        Entity entity = new Entity(IdManager.getEntityId());
+        Entity entity2 = new Entity(IdManager.getEntityId());
+        Component movement = new Movement(entity, IdManager.getComponentId());
         entity.addComponent(movement);
         // 事件通信
         ExecutorService executor = Executors.newCachedThreadPool();
         AsyncEventBus eventBus = new AsyncEventBus(executor);
-        Component collision=new Collision(entity,COMPONENT_ID+2);
+        Component collision=new Collision(entity,IdManager.getComponentId());
         entity.addComponent(collision);
         eventBus.register(collision);
         eventBus.post(new CollisionEvent(entity,entity2,true));
         //查找实体组件
         Set<Integer> componentsId=new HashSet<>();
-        entity.containsComponent(Movement.class,componentsId);
+        entity.searchComponent(Movement.class,componentsId);
         System.out.println("找到的组件id："+componentsId);
         //entity生命周期
         entity.init();
@@ -45,7 +43,7 @@ public class EntityTest {
         entity.update();
         entity.lateUpdate();
         entity.stop();
-        entity.deleteComponent(COMPONENT_ID + 1);
+        entity.deleteComponent(collision.getId());
         entity.destroy();
     }
 

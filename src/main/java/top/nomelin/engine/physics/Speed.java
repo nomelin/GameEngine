@@ -1,6 +1,6 @@
 package top.nomelin.engine.physics;
 
-import top.nomelin.engine.controller.Game;
+import top.nomelin.engine.game.Game;
 
 /**
  * <p>速度类</p>
