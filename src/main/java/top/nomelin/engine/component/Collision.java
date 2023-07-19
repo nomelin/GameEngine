@@ -16,7 +16,7 @@ public class Collision extends Component{
     }
 
     @Override
-    public boolean updateFunc() {
+    public boolean update() {
         //TODO update需要在碰撞事件处理之前，否则碰撞事件一更新，update就刷新了enter和exit。不知道有没有更好的方法
         if(collisionEnter){
             collisionEnter=false;
@@ -28,12 +28,12 @@ public class Collision extends Component{
     }
 
     @Override
-    protected boolean fixedUpdateFunc() {
+    protected boolean fixedUpdate() {
         return false;
     }
 
     @Override
-    protected boolean lateUpdateFunc() {
+    protected boolean lateUpdate() {
         return false;
     }
 

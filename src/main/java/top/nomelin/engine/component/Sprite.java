@@ -38,7 +38,7 @@ public class Sprite extends Component {
     }
 
     @Override
-    public boolean updateFunc() {
+    public boolean update() {
         // 如果图片集合不为空，就更新索引
         if (!nowImages.isEmpty()) {
             // 索引加一，如果超过了集合的大小，就从头开始
@@ -51,12 +51,12 @@ public class Sprite extends Component {
     }
 
     @Override
-    protected boolean fixedUpdateFunc() {
+    protected boolean fixedUpdate() {
         return false;
     }
 
     @Override
-    protected boolean lateUpdateFunc() {
+    protected boolean lateUpdate() {
         return false;
     }
 

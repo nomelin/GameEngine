@@ -6,19 +6,24 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- * 键盘和鼠标输入类，采用单例模式。
+ * 键盘和鼠标输入类，采用双重加锁单例模式。
  */
 public class Input implements KeyListener , MouseListener {
-    private static Input instance;
+    private volatile static Input instance;
     private boolean[] keys;
 
     private Input() {
         keys = new boolean[256];
     }
 
+
     public static Input getInstance() {
         if (instance == null) {
-            instance = new Input();
+            synchronized (Input.class){
+                if(instance==null){
+                    instance = new Input();
+                }
+            }
         }
         return instance;
     }

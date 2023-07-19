@@ -34,12 +34,12 @@ public abstract class Component {
         LOGGER.info("组件id=" + id + ",onstart");
     }
 
-    public final boolean fixedUpdate() {
+    public final boolean fixedUpdateFunction() {
         if (!onStart) {
             LOGGER.info("组件id=" + id + ",fixedUpdate失败，未启动");
             return false;
         }
-        if (fixedUpdateFunc()) {
+        if (fixedUpdate()) {
             LOGGER.info("组件id=" + id + ",fixedUpdate成功");
             return true;
         }
@@ -50,14 +50,14 @@ public abstract class Component {
     /**
      * 子类需要实现这个方法作为功能体。无需考虑启动状态。
      */
-    protected abstract boolean fixedUpdateFunc();
+    protected abstract boolean fixedUpdate();
 
-    public final boolean update() {
+    public final boolean updateFunction() {
         if (!onStart) {
             LOGGER.info("组件id=" + id + ",update失败，未启动");
             return false;
         }
-        if (updateFunc()) {
+        if (update()) {
             LOGGER.info("组件id=" + id + ",update成功");
             return true;
         }
@@ -65,14 +65,14 @@ public abstract class Component {
         return false;
     }
 
-    protected abstract boolean updateFunc();
+    protected abstract boolean update();
 
-    public final boolean lateUpdate() {
+    public final boolean lateUpdateFunction() {
         if (!onStart) {
             LOGGER.info("组件id=" + id + ",lateUpdate失败，未启动");
             return false;
         }
-        if (lateUpdateFunc()) {
+        if (lateUpdate()) {
             LOGGER.info("组件id=" + id + ",lateUpdate成功");
             return true;
         }
@@ -80,7 +80,7 @@ public abstract class Component {
         return false;
     }
 
-    protected abstract boolean lateUpdateFunc();
+    protected abstract boolean lateUpdate();
 
     public void stop() {
         LOGGER.info("组件id=" + id + ",stop");

@@ -3,10 +3,8 @@ package top.nomelin.engine.entity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import top.nomelin.engine.component.Component;
-import top.nomelin.engine.game.Game;
 import top.nomelin.engine.controller.IdManager;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -156,6 +154,25 @@ public class Entity {
         return true;
     }
 
+    /**
+     * 返回实体是否包含某种组件
+     * @param componentClass 组件的class对象
+     * @return 包含为true
+     */
+    public boolean containsComponent(Class<?> componentClass){
+        if(!Component.class.isAssignableFrom(componentClass)){
+            LOGGER.warn("传入的componentClass不是component或其子类对象");
+            return false;
+        }
+        for(Component component:components.values()){
+            if(componentClass.isInstance(component)){
+                return true;
+            }
+        }
+        LOGGER.info("实体没有此类组件："+componentClass.getName());
+        return false;
+    }
+
     public void init() {
         LOGGER.info("实体id=" + id + ",init");
         onStart=false;
@@ -175,7 +192,7 @@ public class Entity {
             return false;
         }
         for (Component component : components.values()) {
-            component.fixedUpdate();
+            component.fixedUpdateFunction();
         }
         LOGGER.info("实体id=" + id + ",fixedUpdate结束");
         return true;
@@ -189,7 +206,7 @@ public class Entity {
             return false;
         }
         for (Component component : components.values()) {
-            component.update();
+            component.updateFunction();
         }
         LOGGER.info("实体id=" + id + ",update结束");
         return true;
@@ -201,7 +218,7 @@ public class Entity {
             return false;
         }
         for (Component component : components.values()) {
-            component.lateUpdate();
+            component.lateUpdateFunction();
         }
         LOGGER.info("实体id=" + id + ",lateUpdate结束");
         return true;
