@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import top.nomelin.engine.game.Game;
 
 import java.time.Instant;
+import java.util.Random;
 
 public class GameManager {
     /**
@@ -14,7 +15,7 @@ public class GameManager {
     /**
      * 期望的渲染帧间隔时间
      */
-    private static long stepTime;
+    private static long deltaTime;
     /**
      * 上一次进入物理帧时间
      */
@@ -39,8 +40,13 @@ public class GameManager {
 
     public static void init() {
         //毫秒，四舍五入。
+
         fixedDeltaTime = Math.round(1000f / Game.FIXED_FPS);
-        stepTime = Math.round(1000f / Game.RENDER_FPS);
+        if(Game.RENDER_FPS==0){
+            deltaTime=0;//即帧率无上限
+        }else if(Game.RENDER_FPS>0){
+            deltaTime = Math.round(1000f / Game.RENDER_FPS);
+        }
         onStart = false;
         LOGGER.info("初始化");
     }
@@ -54,38 +60,55 @@ public class GameManager {
             instant = Instant.now();
             long realTime = instant.toEpochMilli();
             //执行逻辑帧
-            if (realTime - lastUpdateTime >= stepTime) {
+            if (realTime - lastUpdateTime >= deltaTime) {
                 renderLoop();
                 actualFPS = (int) (1000 / (realTime - lastUpdateTime));
-                LOGGER.info("执行逻辑帧,当前帧率" + actualFPS + "时间差：" + (realTime - lastUpdateTime));
+                LOGGER.info("执行了渲染帧,当前帧率" + actualFPS + ",时间差：" + (realTime - lastUpdateTime)+",期望时间差:"+ deltaTime);
                 lastUpdateTime = realTime;
             } else {
-                LOGGER.info("时间差不足，未执行逻辑帧，时间差：" + (realTime - lastUpdateTime));
+                LOGGER.info("时间差不足，未执行渲染帧，时间差：" + (realTime - lastUpdateTime)+",期望时间差:"+ deltaTime);
             }
             //执行物理帧循环
             instant = Instant.now();
             realTime = instant.toEpochMilli();
             //实际间隔，如果游戏卡了，时间间隔就大，就可能需要执行很多物理帧。
             long realDeltaTime = realTime - lastFixedUpdateTime + fixedRemainingTime;
-            while (realDeltaTime >= fixedDeltaTime) {
-                fixedLoop(fixedDeltaTime);
-                LOGGER.info("执行物理帧，目前的时间差为："+realDeltaTime);
-                realDeltaTime -= fixedDeltaTime;
-                //不能放在while外面，如果没有执行物理帧，那么不能更新它们。
+            if(realDeltaTime>=fixedDeltaTime){
+                while (realDeltaTime >= fixedDeltaTime) {
+                    fixedLoop(fixedDeltaTime);
+                    LOGGER.info("执行了物理帧，目前的时间差为："+realDeltaTime+",期望时间差:"+ fixedDeltaTime);
+                    realDeltaTime -= fixedDeltaTime;
+                }
+                //不能放在外面，如果没有执行物理帧，那么不能更新它们。
                 lastFixedUpdateTime = realTime;
                 fixedRemainingTime = realDeltaTime;
+                LOGGER.info("物理帧剩余时间："+realDeltaTime+"毫秒");
             }
             LOGGER.info("一个游戏循环完毕");
         }
     }
 
     private static void renderLoop() {
-        LOGGER.info("执行渲染帧");
+        LOGGER.info("执行【渲染帧】");
+        int sleepTime=new Random().nextInt(20);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        LOGGER.info("渲染帧运行："+sleepTime+"毫秒");
 
     }
 
     private static void fixedLoop(long delta) {
-        LOGGER.info("执行物理帧");
+        LOGGER.info("执行【物理帧】");
+        int sleepTime=new Random().nextInt(20);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        LOGGER.info("物理帧运行："+sleepTime+"毫秒");
     }
 
     public static void start() {

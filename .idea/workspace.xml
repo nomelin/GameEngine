@@ -8,18 +8,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3cc5d49-da26-4778-a4ec-b09d9cdc9f6b" name="变更" comment="开发中">
-      <change afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/controller/EventBusManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/event/RenderEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/top/nomelin/engine/controller/GameManagerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/SimpleSprite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/interfaces/RendererInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/interfaces/SpriteInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/render/SimpleRenderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Collision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Collision.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Component.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Movement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Movement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/component/Sprite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/controller/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/controller/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/controller/IdManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/controller/IdManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/input/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/input/Input.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/game/StandardStateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/game/StandardStateMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/interfaces/StateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/top/nomelin/engine/interfaces/StateMachineInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/top/nomelin/engine/component/SpriteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/top/nomelin/engine/component/SpriteTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/top/nomelin/engine/controller/GameManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/top/nomelin/engine/controller/GameManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/top/nomelin/engine/entity/EntityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/top/nomelin/engine/entity/EntityTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +35,9 @@
       <list>
         <option value="package-info" />
         <option value="AnnotationType" />
-        <option value="Interface" />
         <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -88,7 +92,7 @@
       <recent name="top.nomelin.engine.physics" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GameManagerTest.test">
+  <component name="RunManager" selected="JUnit.EntityTest.test">
     <configuration name="EntityTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GameEngine" />
       <extension name="coverage">
@@ -171,10 +175,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GameManagerTest.test" />
-        <item itemvalue="JUnit.StateMachineTest.Test" />
         <item itemvalue="JUnit.EntityTest.test" />
         <item itemvalue="JUnit.SpriteTest.test" />
+        <item itemvalue="JUnit.GameManagerTest.test" />
+        <item itemvalue="JUnit.StateMachineTest.Test" />
         <item itemvalue="JUnit.EntityTest.testLog" />
       </list>
     </recent_temporary>
@@ -194,7 +198,7 @@
       <workItem from="1687358732047" duration="27000" />
       <workItem from="1687594898352" duration="18571000" />
       <workItem from="1689659496086" duration="16569000" />
-      <workItem from="1689749277744" duration="11716000" />
+      <workItem from="1689749277744" duration="29539000" />
     </task>
     <task id="LOCAL-00001" summary="demo1">
       <created>1683886276217</created>
@@ -357,7 +361,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689684650933</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="开发中">
+      <created>1689771936069</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1689771936070</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

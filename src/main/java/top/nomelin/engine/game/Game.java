@@ -10,12 +10,12 @@ public class Game {
      */
     public static final int PIXELS_PER_UNIT_LENGTH=100;
     /**
-     * 额定FPS，用于物理运算，即fixedUpdate
+     * 额定FPS，用于物理运算，即fixedUpdate。不保证按正确间隔调用，但保证在一段时间内调用正确的次数。
      */
-    public static final int FIXED_FPS =60;
+    public static final int FIXED_FPS =50;
 
     /**
-     * 希望达到的渲染fps
+     * 希望达到的渲染fps,为0即为无上限
      */
     public static final int RENDER_FPS=100;
 

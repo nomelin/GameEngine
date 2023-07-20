@@ -33,9 +33,9 @@ public class EntityTest {
         eventBus.register(collision);
         eventBus.post(new CollisionEvent(entity,entity2,true));
         //查找实体组件
-        Set<Integer> componentsId=new HashSet<>();
-        entity.searchComponent(Movement.class,componentsId);
-        System.out.println("找到的组件id："+componentsId);
+        List<Component> comps=entity.searchComponent(Movement.class);
+        System.out.println("找到的组件id：");
+        comps.forEach(c-> System.out.println(c.getId()));
         //entity生命周期
         entity.init();
         entity.start();

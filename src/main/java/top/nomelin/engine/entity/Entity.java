@@ -5,10 +5,7 @@ import org.apache.logging.log4j.Logger;
 import top.nomelin.engine.component.Component;
 import top.nomelin.engine.controller.IdManager;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 
 public class Entity {
@@ -94,7 +91,7 @@ public class Entity {
     /**
      * 删除组件
      * @param component 组件对象，或者说它的引用。
-     * @return
+     * @return 成功与否
      */
     public boolean deleteComponent(Component component) {
         if (components.containsValue(component)) {
@@ -119,23 +116,24 @@ public class Entity {
             Component comp = entry.getValue();
             if (comp.getClass().getSimpleName().equals(compName)) {
                 iter.remove();
-                LOGGER.info("实体id=" + id + ",deleteComponent(component)成功," + "组件id=" + comp.getId());
+                LOGGER.info("实体id=" + id + ",deleteComponent(name)成功," + "组件id=" + comp.getId());
                 num++;
             }
         }
         if(num==0){
-            LOGGER.warn("实体id=" + id + ",deleteComponent(component)失败，没有这类组件");
+            LOGGER.warn("实体id=" + id + ",deleteComponent(name)失败，没有这类组件");
             return false;
         }
         return true;
     }
 
     /**
-     * 查找实体是否具有某种组件
+     * 查找实体具有的某种组件
      * @param componentClass 要查找的组件类的class对象
      * @param ComponentsId 需要一个已经初始化的set引用，存放找到组件对象的id
      * @return 如果没有找到或set没有实例化，返回false，否则返回true
      */
+    @Deprecated(forRemoval = false)
     public boolean searchComponent(Class<?> componentClass, Set<Integer> ComponentsId){
         if(!Component.class.isAssignableFrom(componentClass)){
             LOGGER.warn("传入的componentClass不是component或其子类对象");
@@ -155,6 +153,15 @@ public class Entity {
     }
 
     /**
+     * 查找实体具有的某种组件
+     * @param componentClass 要查找的组件类的class对象
+     * @return 查找到的组件的数组
+     */
+    public List<Component> searchComponent(Class<?> componentClass){
+        return components.values().stream().filter(componentClass::isInstance).toList();
+    }
+
+    /**
      * 返回实体是否包含某种组件
      * @param componentClass 组件的class对象
      * @return 包含为true
@@ -164,10 +171,9 @@ public class Entity {
             LOGGER.warn("传入的componentClass不是component或其子类对象");
             return false;
         }
-        for(Component component:components.values()){
-            if(componentClass.isInstance(component)){
-                return true;
-            }
+        //boolean anyMatch(Predicate<? super T> predicate)返回此流的任何元素是否与提供的谓词匹配。
+        if(components.values().stream().anyMatch(componentClass::isInstance)){
+            return true;
         }
         LOGGER.info("实体没有此类组件："+componentClass.getName());
         return false;

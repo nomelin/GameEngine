@@ -4,7 +4,7 @@ import top.nomelin.engine.game.State;
 
 import java.util.function.Function;
 
-public interface StateMachine {
+public interface StateMachineInterface {
 
     // 初始化状态机
     //void init(State... states);

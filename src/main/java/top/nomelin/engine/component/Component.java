@@ -9,7 +9,7 @@ public abstract class Component {
     // 每个组件示例都属于一个实体实例
     private final Entity entity;
 
-    public final int id;
+    private final int id;
 
     //是否处于start()-stop()
     private boolean onStart;

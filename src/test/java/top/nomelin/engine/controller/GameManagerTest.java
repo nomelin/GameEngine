@@ -6,6 +6,8 @@ public class GameManagerTest {
     @Test
     public void test() {
         GameManager.init();
-        System.out.println(GameManager.getFixedDeltaTime());
+        GameManager.start();
+        //GameManager.gameLoop();
+        System.out.println(getClass().getResource(""));
     }
 }

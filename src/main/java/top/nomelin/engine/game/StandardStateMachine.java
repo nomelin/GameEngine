@@ -4,14 +4,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import top.nomelin.engine.controller.IdManager;
 import top.nomelin.engine.interfaces.Input;
-import top.nomelin.engine.interfaces.StateMachine;
+import top.nomelin.engine.interfaces.StateMachineInterface;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Function;
 
-public class StandardStateMachine implements StateMachine {
+public class StandardStateMachine implements StateMachineInterface {
 
     private boolean onStart;
 

@@ -66,13 +66,13 @@ public class IdManager {
 
     public static int getSystemId() {
         systemOffset++;
-        if (entityOffset >= Game.COMPONENT_ID - Game.ENTITY_ID) {
+        if (systemOffset >= Game.COMPONENT_ID - Game.ENTITY_ID) {
             LOGGER.error("系统id达到上限，无法发放：" + systemOffset);
             return Game.ERROR_ID;
         }
-        LOGGER.info("发放系统id:" + (Game.SYSTEM_ID + entityOffset));
-        entityCount++;
-        return Game.SYSTEM_ID + entityOffset;
+        LOGGER.info("发放系统id:" + (Game.SYSTEM_ID + systemOffset));
+        systemCount++;
+        return Game.SYSTEM_ID + systemOffset;
     }
 
     public static void releaseId(int id) {
